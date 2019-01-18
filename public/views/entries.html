@@ -9,9 +9,9 @@
             </button>
             <button class="btn btn-outline-primary"
                     ng-click="downloadCSV()"><span class="fas fa-download"></span> Download CSV</button>
-            <a class="btn btn-outline-primary"
+            <a class="btn btn-outline-primary ng-class:{'d-none':tableState.display.length === 0}"
                ui-sref="print"
-               target="_blank"><span class="fas fa-print"></span> Print Presentations</a>
+               target="_blank" ng-disabled="true"><span class="fas fa-print"></span> Print Presentations</a>
         </div>
         <div>
             <div class="btn-group"
