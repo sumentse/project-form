@@ -1,5 +1,5 @@
-# Sharepoint Angular Boilerplate
-This is a basic boilerplate for using AngularJS with Sharepoint. It interacts with the Sharepoint API making it easier for developing applications.
+# Sharepoint Project Form
+This is used for submitting entries for projects
 
 ## Getting Started
 
@@ -45,10 +45,10 @@ You will need to supply your username, password, and the path of the folder on w
 
 ## Built With
 
-* [AngularJS 1](https://angularjs.org/)
+* [AngularJS](https://angularjs.org/)
 * [SCSS](http://sass-lang.com/)
-* [Font Awesome](http://fontawesome.io/icons/)
-* [Bootstrap](http://getbootstrap.com/)
-* [JS ES6]
-* [UI Router](https://ui-router.github.io/ng1/)
+* [Font Awesome](https://fontawesome.com)
+* [Bootstrap 4](http://getbootstrap.com/)
+* [JS ES6/7]
+* [UI Router](https://github.com/angular-ui/ui-router)
 
