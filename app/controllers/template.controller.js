@@ -50,7 +50,7 @@ export default ($rootScope, $state, $scope, spService, email, $async, CONST, use
                     if(userProfile.Email){
                         email.send(
                             [userProfile.Email],
-                            'hadqifair@mskcc.org',
+                            null,
                             `Your presentation for <strong>${$scope.formState.metadata.Title}</strong> has been received. Please keep this for your record.`,
                             `QIF Template Submission`,
                             (success)=>{
