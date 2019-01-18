@@ -17,6 +17,21 @@ export default ($rootScope, $state, $scope, spService, email, $async, CONST, use
             AttachmentFiles: []
         }
     };
+
+    const sendConfirmationEmail = () => {
+        email.send(
+            [userProfile.Email],
+            null,
+            `Your presentation for <strong>${$scope.formState.metadata.Title}</strong> has been received. Please keep this for your record.`,
+            `QIF Template Submission`,
+            (success)=>{
+
+            },
+            (failure)=>{
+
+            }
+        );
+    };
     
     $scope.submitForm = (event) => {
         event.preventDefault();
@@ -48,18 +63,7 @@ export default ($rootScope, $state, $scope, spService, email, $async, CONST, use
                     });
 
                     if(userProfile.Email){
-                        email.send(
-                            [userProfile.Email],
-                            null,
-                            `Your presentation for <strong>${$scope.formState.metadata.Title}</strong> has been received. Please keep this for your record.`,
-                            `QIF Template Submission`,
-                            (success)=>{
-
-                            },
-                            (failure)=>{
-
-                            }
-                        );
+                        sendConfirmationEmail();
                     }                    
 
                     $state.go('complete');
