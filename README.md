@@ -1,5 +1,5 @@
 # Sharepoint Project Form
-This is used for submitting entries for projects
+This is used for submitting entries for projects and viewing them on Sharepoint
 
 ## Getting Started
 
