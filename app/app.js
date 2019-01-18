@@ -1,6 +1,5 @@
 'use strict';
 import 'babel-polyfill';
-// window.exporter = require('export-to-csv');
 import angular from 'angular';
 import './controllers';
 import './services';
