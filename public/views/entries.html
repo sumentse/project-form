@@ -1,5 +1,5 @@
 <div class="animated fadeIn mt-2">
-    <h3 class="text-center mb-3">Abstract Presentations</h3>
+    <h3 class="text-center mb-3">Abstract Submissions</h3>
     <div class="d-flex justify-content-between">
         <div>
             <button class="btn btn-outline-primary hvr-icon-spin"
@@ -9,9 +9,9 @@
             </button>
             <button class="btn btn-outline-primary"
                     ng-click="downloadCSV()"><span class="fas fa-download"></span> Download CSV</button>
-            <a class="btn btn-outline-primary ng-class:{'d-none':tableState.display.length === 0}"
+            <a class="btn btn-outline-primary ng-class:{'d-none': !buttonState.hasPresentations}"
                ui-sref="print"
-               target="_blank" ng-disabled="true"><span class="fas fa-print"></span> Print Presentations</a>
+               target="_blank"><span class="fas fa-print"></span> Print Presentations</a>
         </div>
         <div>
             <div class="btn-group"
@@ -37,7 +37,7 @@
         </div>
 
     </div>
-    <table class="table mt-3 table-responsive"
+    <table class="table mt-3"
            custom-event
            st-table="tableState.display"
            st-pipe="customPipe">
@@ -45,8 +45,6 @@
             <tr id="column-names">
                 <th class="clickable align-top"
                     st-sort="project_title">Project Title</th>
-                <th class="clickable align-top"
-                    st-sort="project_leader">Project Leader</th>
                 <th class="clickable align-top"
                     st-sort="contact_person">Contact Person</th>
                 <th class="clickable align-top"
@@ -59,7 +57,7 @@
         </thead>
         <tbody>
             <tr>
-                <th>
+                <td>
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><span class="fas fa-search"></span></span>
@@ -68,18 +66,8 @@
                                st-search="project_title"
                                ng-model="filterState.searchTitle" />
                     </div>
-                </th>
-                <th>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><span class="fas fa-user"></span></span>
-                        </div>
-                        <input class="form-control"
-                               st-search="project_leader"
-                               ng-model="filterState.projectLeader" />
-                    </div>
-                </th>
-                <th>
+                </td>
+                <td>
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><span class="fas fa-user"></span></span>
@@ -88,23 +76,23 @@
                                st-search="contact_person"
                                ng-model="filterState.contactPerson" />
                     </div>
-                </th>
-                <th>
+                </td>
+                <td>
                     <select class="form-control"
+                            ng-change="refreshTable()"
                             st-search="form_status"
                             ng-model="filterState.formStatus">
-                        <option value="">All</option>
+                        <option value="" ng-selected="selected">All</option>
                         <option value="completed">Completed</option>
                         <option value="draft">Draft</option>
                     </select>
-                </th>
-                <th></th>
-                <th><button class="btn btn-danger"
-                            ng-click="clearFilters()">Clear Filters</button></th>
+                </td>
+                <td></td>
+                <td><button class="btn btn-danger"
+                            ng-click="clearFilters()">Clear Filters</button></td>
             </tr>
             <tr ng-repeat="row in tableState.display">
                 <td ng-bind="row.project_title"></td>
-                <td ng-bind="row.project_leader"></td>
                 <td ng-bind="row.contact_person"></td>
                 <td ng-bind="row.form_status"></td>
                 <td ng-bind="row.Modified | date:'medium'"></td>
