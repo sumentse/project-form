@@ -68,7 +68,7 @@ export default ($state, $rootScope, $scope, $filter, $async, spService, CSV, mod
   };
 
   $scope.deleteItem = (id)=>{
-    modal.confirmation($async(async(userAnswer)=>{
+    modal.confirmation(async(userAnswer)=>{
       
       if(userAnswer === true){
         await spService.deleteListItem(CONST.rootFolder, CONST.LISTS.form, id);
@@ -80,7 +80,7 @@ export default ($state, $rootScope, $scope, $filter, $async, spService, CSV, mod
         });        
       }
       
-    }));
+    });
   };
 
   $scope.clearFilters = () => {
