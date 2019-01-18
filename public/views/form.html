@@ -1,0 +1,259 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-12 text-center">
+            <img class="mt-4 img-fluid"
+                 src="QIFTreatment.png"
+                 alt="logo">
+        </div>
+        <div class="col-12 mt-4">
+            All submitted abstracts will be considered by staff and patient judges for various awards. Save your work before submitting. Online submissions will end on Friday, February 22, 2019.
+            <span class="text-danger">*</span> Indicates mandatory field.
+        </div>
+    </div>
+    <form name="abstract-submission"
+          ng-submit="finalSubmit($event)"
+          class="mt-4">
+        <div class="form-group">
+            <label for="project_title">Project Title <span class="text-danger">*</span></label>
+            <input type="text"
+                   autocomplete="off"
+                   class="form-control"
+                   maxlength="255"
+                   ng-model="formState.metadata.project_title"
+                   ng-model-options="{allowInvalid: true}"
+                   required
+                   id="project_title">
+            <small class="form-text text-muted">Enter your project name.</small>
+        </div>
+        <div class="form-group">
+            <label for="project_leader">Project Leader <span class="text-danger">*</span></label>
+            <input type="text"
+                   autocomplete="off"
+                   class="form-control"
+                   maxlength="255"
+                   ng-model="formState.metadata.project_leader"
+                   ng-model-options="{allowInvalid: true}"
+                   required
+                   id="project_leader">
+            <small class="form-text text-muted">Who is leading this project.</small>
+        </div>
+        <div class="form-group">
+            <label for="contact_person">Contact Person <span class="text-danger">*</span></label>
+            <input type="text"
+                   autocomplete="off"
+                   class="form-control"
+                   maxlength="255"
+                   ng-model="formState.metadata.contact_person"
+                   ng-model-options="{allowInvalid: true}"
+                   required
+                   id="contact_person">
+            <small class="form-text text-muted">Individual who should be contacted for all inquiries regarding this
+                submission. Your contact person can be different from your project leader.</small>
+        </div>
+        <div id="team-members" class="form-group">
+            <div class="row">
+                <div class="col-12">
+                    <label>Team Members <span class="text-danger">*</span></label>
+                </div>
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-12 col-sm-4 mb-1">
+                            <label for="name">Name</label>
+                            <input type="text"
+                                   ng-model="member.name"
+                                   maxlength="255"
+                                   class="form-control"
+                                   pattern=".*\S+.*"
+                                   ng-required="uiState.members.length === 0 ? true : false"
+                                   autocomplete="off">
+                        </div>
+                        <div class="col-12 col-sm-4 mb-1">
+                            <label for="name">Job Title</label>
+                            <input type="text"
+                                   ng-model="member.jobTitle"
+                                   maxlength="255"
+                                   class="form-control"
+                                   pattern=".*\S+.*"
+                                   ng-required="uiState.members.length === 0 ? true : false"
+                                   autocomplete="off">
+                        </div>
+                        <div class="col-12 col-sm-4 mb-1">
+                            <label for="name">Department</label>
+                            <input type="text"
+                                   ng-model="member.department"
+                                   maxlength="255"
+                                   class="form-control"
+                                   pattern=".*\S+.*"
+                                   ng-required="uiState.members.length === 0 ? true : false"
+                                   autocomplete="off">
+                        </div>
+                        <div class="col-12 text-right mt-3">
+                            <div class="btn btn-primary ng-class:{'animated pulse infinite btn-success': member.name && member.jobTitle && member.department}"
+                                 ng-click="addMember(member)"><span class="fas fa-plus"></span> Add Member</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="scrollbox-container"
+                 class="col-12 mt-4 ng-class:{'d-none': uiState.members.length === 0}">
+                <div ng-repeat="member in uiState.members"
+                     class="p-2 ng-class:{'border-bottom':!$last}">
+                    <span class="fas fa-window-close text-danger clickable"
+                          ng-click="removeMember(member.id)"></span> <span ng-bind="member.name + '/' + member.department + ' (' + member.jobTitle + ')'"></span>
+                </div>
+            </div>
+        </div>
+        <form-text-box name="departments_involved"
+                       label="Departments Involved"
+                       ng-model="formState.metadata.departments_involved"
+                       required="true"
+                       description="Please indicate the departments and clinical areas involved in the
+                       project."
+                       max-word-count={{uiState.maxWordCount}}></form-text-box>
+        <form-text-box name="need_assessment"
+                       label="Needs Assessment"
+                       ng-model="formState.metadata.need_assessment"
+                       required="true"
+                       description="Describe the problem you are trying to solve. How did you identify this
+                       problem? What are the gaps between the current outcomes/conditions to the desired outcomes/conditions?
+                       How did you measure the difference between current and desired outcome?"
+                       max-word-count={{uiState.maxWordCount}}></form-text-box>
+        <form-text-box name="project_goals"
+                       label="Goals and Objectives"
+                       ng-model="formState.metadata.project_goals"
+                       required="true"
+                       description="Describe the desired outcome or conditions"
+                       max-word-count={{uiState.maxWordCount}}></form-text-box>
+        <form-text-box name="changes_made"
+                       label="What change was introduced?"
+                       ng-model="formState.metadata.changes_made"
+                       required="true"
+                       description="What changes did you make to solve your project's problem? Describe
+        what you did and how you did it."
+                       max-word-count={{uiState.maxWordCount}}></form-text-box>
+        <form-text-box name="impact_made"
+                       label="How will your project impact the institution?"
+                       ng-model="formState.metadata.impact_made"
+                       required="true"
+                       description="Describe what happened after your project was implemented. Was your
+                       project successful? How did you measure success? Did you meet the desired outcomes you initially
+                       identified? If your project is in progress, how do you plan to measure success?"
+                       max-word-count={{uiState.maxWordCount}}></form-text-box>
+        <form-text-box name="discussion"
+                       label="Discussion"
+                       ng-model="formState.metadata.discussion"
+                       required="true"
+                       description="What is the takeaway of your project? Describe any recommendations for future work. Can you project impact the MSK community at large? What did you learn? Were the results what you expected? What are the next steps, if any?"
+                       max-word-count={{uiState.maxWordCount}}></form-text-box>
+        <div class="form-group">
+            <label for="green_friendly">Sustainability/Green Impact? <span class="text-danger">*</span></label>
+            <div class="form-check">
+                <input class="form-check-input"
+                       type="radio"
+                       name="is-green"
+                       id="green-yes"
+                       required
+                       ng-model="formState.metadata.green_friendly"
+                       value="Yes">
+                <label class="form-check-label"
+                       for="green-yes">
+                    Yes
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input"
+                       type="radio"
+                       name="is-green"
+                       id="green-no"
+                       required
+                       ng-model="formState.metadata.green_friendly"
+                       value="No">
+                <label class="form-check-label"
+                       for="green-no">
+                    No
+                </label>
+            </div>
+        </div>
+        <form-text-box name="green_friendly_describe"
+                       label="Please describe if yes"
+                       required={{formState.metadata.green_friendly}}
+                       ng-model="formState.metadata.green_friendly_describe"
+                       max-word-count={{uiState.maxWordCount}}></form-text-box>
+        <fieldset class="form-group">
+            <legend><small>Attachments</small></legend>
+            <hr>
+            <p>You can only upload up to 50 MB per file. Max files to attached is 3 (Including files save on the
+                server).</p>
+            <div class="btn btn-info hvr-icon-grow"
+                 ngf-max-size="50MB"
+                 ngf-multiple="true"
+                 ngf-select="uploadFiles($files, $invalidFiles)"
+                 name="file"
+                 ngf-max-files={{uiState.maxFileSize}}><span class="fas fa-cloud-upload-alt hvr-icon"></span> Upload Files
+            </div>
+            <div>
+                <br />
+                <p class="ng-class:{'d-none': formState.metadata.file_attachments.supporting.length === 0 }"><small
+                           ng-bind="formState.metadata.file_attachments.supporting.length + ' files attached on server'"></small></p>
+                <p class="animated ng-class:{'slideInLeft':!removeItem, 'slideOutLeft':removeItem}"
+                   ng-repeat="file in formState.metadata.file_attachments.supporting"
+                   ng-init="removeItem = false">
+                    <span class="text-danger fas fa-trash clickable"
+                          ng-click="removeItem = true; removeFileFromServer(file.name)"></span>
+                    <span class="clickable text-primary" ng-bind="file.name + ' (' + (file.size | bytes) + ')'" ng-click="downloadFile(file.serverURL, file.type)"></span>
+                </p>
+            </div>
+            <div>
+                <br />
+                <p><small ng-bind="formState.AttachmentFiles.length + ' files attached'"></small></p>
+                <p class="text-success"
+                   ng-repeat="file in formState.AttachmentFiles"><span class="fas fa-file"></span> <span ng-bind="file.name"></span>
+                    (<span ng-bind="file.size | bytes"></span>)</p>
+                <p class="text-danger"
+                   ng-repeat="file in uiState.errorFiles"><span ng-bind="file.name"></span> exceeded max file size</p>
+                <span class="text-danger clickable ng-class:{'d-none':formState.AttachmentFiles.length === 0}"
+                      ng-click="clearAttachments()"><span class="fas fa-trash"></span> Clear Attachments</span>
+            </div>
+        </fieldset>
+        <div class="text-center mb-5">
+            <div class="upload-bar ng-class:{
+                'animated fadeInUp': uiState.showProgressBar && uiState.progressBar !== 0 && uiState.initialAnimationProgress === false,
+                'animated fadeOut': !uiState.showProgressBar && uiState.progressBar === 100 && uiState.initialAnimationProgress === false,
+                'd-none': !uiState.showProgressBar && uiState.progressBar === 0 && uiState.initialAnimationProgress
+            }">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-success active"
+                         role="progressbar"
+                         aria-valuenow="100"
+                         aria-valuemin={{uiState.progressBar}}
+                         aria-valuemax="100"
+                         ng-attr-style="width:{{uiState.progressBar}}%"
+                         ng-bind="uiState.progressBar + '%'">
+                    </div>
+                </div>
+                <div id="progress-bar-message"
+                     class="text-center position-relative">
+                    <p class="animated position-absolute m-auto ng-class:{'fadeOutUp':uiState.progressBar === 100}">Uploading
+                        file…</p>
+                    <p class="animated position-absolute m-auto ng-class:{'d-none':uiState.progressBar !== 100, 'fadeInUp': uiState.progressBar === 100}">Finishing
+                        up upload…</p>
+                </div>
+            </div>
+            <br />
+            <br />
+            <button type="button"
+                    class="btn btn-success hvr-icon-grow"
+                    ng-click="saveForm()"><span class="fas fa-save hvr-icon"></span> Save</button>
+            <button type="submit"
+                    class="btn btn-primary hvr-icon-rotate"><span class="fas fa-paper-plane hvr-icon"></span> Submit</button>
+        </div>
+        <div class="text-center text-muted ng-class:{'d-none':!uiState.lastModified}">
+            Your submission has been saved. You can continue to make edits. <br> Last Modified on 
+            <strong>
+                <span ng-bind="uiState.lastModified | date:'EEE, MMM. d'"></span> at 
+                <strong ng-bind="uiState.lastModified | date:'h:mm a'"></strong>
+            </strong>
+        </div>
+    </form>
+    
+</div>

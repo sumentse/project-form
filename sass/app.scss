@@ -1,0 +1,55 @@
+@import "https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css";
+@import "https://use.fontawesome.com/releases/v5.0.12/css/all.css";
+@import 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css';
+@import 'core/custombootstrap';
+@import 'https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css';
+@import 'core/msk_colors';
+@import './node_modules/intro.js/introjs';
+@import './node_modules/intro.js/themes/introjs-nassim';
+@import 'https://fonts.googleapis.com/css?family=Roboto';
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+
+#angular-container {
+	@import "core/globals";
+	font-family: 'Roboto', sans-serif;
+
+	#qif-template {
+		width: 100%;
+		height: 360px;
+	}
+
+	#scrollbox-container {
+		position: relative;
+		border-radius: 4px;
+		background: #FFF;
+		height: 150px;
+		border: 1px solid #ccc;
+		overflow-y: scroll;
+	}
+
+	#progress-bar-message {
+		>p {
+			left: 0;
+			right: 0;
+		}
+	}
+
+	#hide-controls {
+		background: #444444;
+    width: 25%;
+    height: 22px;
+    bottom: 9px;
+    right: 2px;
+	}
+
+	.pagebreak {
+        page-break-after: always;
+    }
+
+	@import "core/responsivemedia";
+	@import "_partials/pagination.component";
+
+}

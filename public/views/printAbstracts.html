@@ -1,0 +1,77 @@
+<div class="print" class="my-5 pagebreak" ng-repeat="form in forms">
+    <h2 class="text-center">QIF Abstract Form</h2>
+    <div class="row">
+        <div class="col-12 text-right">
+            <strong>Date: </strong> <span ng-bind="form.Modified | date:'short'"></span>
+        </div>
+        <div class="col-12 my-3">
+            <h4>Project Title</h4>
+            <div ng-bind="form.project_title"></div>
+        </div>
+        <div class="col-12 my-3">
+            <h4>Project Leader</h4>
+            <div ng-bind="form.project_leader"></div>
+        </div>
+        <div class="col-12 my-3">
+            <h4>Contact Person</h4>
+            <div ng-bind="form.contact_person"></div>
+        </div>
+        <div class="col-12 my-3">
+            <h4>Team Members</h4>
+            <div>
+                <table class="table table-sm">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Name</th>
+                            <th>Job Title</th>
+                            <th>Department</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="member in form.team_members">
+                            <td ng-bind="member.name"></td>
+                            <td ng-bind="member.jobTitle"></td>
+                            <td ng-bind="member.department"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-12 my-3">
+            <h4>Departments Involved</h4>
+            <div ng-bind="form.departments_involved"></div>
+        </div>
+        <div class="col-12 my-3">
+            <h4>Needs Assessment</h4>
+            <div ng-bind="form.need_assessment"></div>
+        </div>
+        <div class="col-12 my-3">
+            <h4>Goals and Objectives</h4>
+            <div ng-bind="form.project_goals"></div>
+        </div>
+        <div class="col-12 my-3">
+            <h4>What change was introduced?</h4>
+            <div ng-bind="form.changes_made"></div>
+        </div>
+        <div class="col-12 my-3">
+            <h4>How will your project impact the institution?</h4>
+            <div ng-bind="form.impact_made"></div>
+        </div>
+        <div class="col-12 my-3">
+            <h4>Discussion</h4>
+            <div ng-bind="form.discussion"></div>
+        </div>
+        <div class="col-12 my-3">
+            <h4>Green Friendly</h4>
+            <div ng-bind="form.green_friendly"></div>
+            <p>Additional Info: <span ng-bind="form.green_friendly_describe"></span></p>
+        </div>
+        <div class="col-12 my-3">
+            <h4>Attachments</h4>
+            <p ng-bind="form.has_supporting_documents"></p>
+            <div ng-repeat="file in form.file_attachments.supporting">
+                <a ng-href="{{file.serverURL}}" target="_blank" class="text-success"><span class="fas fa-file"></span> <span ng-bind="file.name"></span></a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<div id="completed-form"
+     class="mt-5 animated fadeIn"
+     ng-switch="transitionFrom">
+    <h3>Thank you. Your presentation has been received.</h3>
+
+    <div class="mt-2 mb-4">
+        <p ng-switch-when="form">
+            Remember to complete and submit a PowerPoint presentation for a complete project submission. 
+            Both the abstract and PowerPoint presentation submissions are due on February 22, 2019.
+        </p>
+        <p ng-switch-when="template">
+            Your presentation will be posted on the Division of Quality and Safety
+            webpage for online voting. Project(s) with the most votes will win the People&rsquo;s Choice Award and a cash
+            prize.
+        </p>
+    </div>
+
+    <div>
+        <div>&raquo; Visit the <a href="/sites/pub/qa/Pages/default.aspx"
+               target="_blank">Division of Quality and Safety</a>/ <a href="/sites/pub/qa/Pages/Fair/main.aspx">QI
+                Fair page</a></div>
+        <div ng-switch-when="form">&raquo; <a ui-sref="template">Visit the PowerPoint Presentation submissions page</a></div>
+        <div><a href="mailto:hadqifair@mskcc.org">&raquo; Email us your questions or comments.</a></div>
+    </div>
+</div>

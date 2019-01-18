@@ -1,0 +1,89 @@
+{
+  "name": "angular_boilerplate",
+  "version": "8.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "live-server ./public",
+    "spmode": "./node_modules/gulp/bin/gulp.js script:watchAll styles:watch public:watch",
+    "dev": "./node_modules/gulp/bin/gulp.js script:watchAll styles:watch",
+    "documentation": "documentation serve ./app/services/spRest.service.js"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            [
+              "env",
+              {
+                "targets": {
+                  "browsers": [
+                    "ie >= 10"
+                  ]
+                }
+              }
+            ]
+          ],
+          "plugins": [
+            "transform-object-rest-spread"
+          ]
+        }
+      ]
+    ]
+  },
+  "dependencies": {
+    "@uirouter/angularjs": "^1.0.20",
+    "angular": "^1.7.5",
+    "angular-animate": "^1.7.5",
+    "angular-async-await": "^1.1.2",
+    "angular-bootstrap-toggle": "^0.1.2",
+    "angular-filter": "^0.5.17",
+    "angular-sanitize": "^1.7.5",
+    "angular-smart-table": "^2.1.11",
+    "angular-timeago": "^0.4.6",
+    "angular-touch": "^1.7.5",
+    "babel-preset-env": "^1.7.0",
+    "bootstrap-sass": "^3.4.0",
+    "checklist-model": "^1.0.0",
+    "crypto-js": "^3.1.9-1",
+    "detect.js": "^2.2.3",
+    "export-to-csv": "^0.1.2",
+    "intro.js": "^2.9.3",
+    "jquery": "^3.3.1",
+    "lodash": "^4.17.10",
+    "moment": "^2.23.0",
+    "ng-file-upload": "^12.2.13",
+    "ui-bootstrap4": "^3.0.5",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.2.3",
+    "angular-mocks": "^1.7.5",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-polyfill": "^6.23.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.0",
+    "browserify-shim": "^3.8.12",
+    "gulp": "gulpjs/gulp.git#4.0",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-babel": "^8.0.0",
+    "gulp-cached": "^1.1.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-ng-annotate": "^2.0.0",
+    "gulp-notify": "^3.2.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.1.1",
+    "gulp-spsave": "^3.1.1",
+    "gulp-uglify": "^3.0.1",
+    "javascript-natural-sort": "^0.7.1",
+    "jest": "^23.6.0",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
+  },
+  "author": "Sumen Tse",
+  "license": "ISC"
+}

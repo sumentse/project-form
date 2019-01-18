@@ -1,0 +1,85 @@
+<div class="animated fadeIn mt-2">
+    <h3 class="text-center mb-3">Template Presentations</h3>
+    <div class="d-flex justify-content-between">
+        <div>
+            <button class="btn btn-outline-primary hvr-icon-spin"
+                    ng-click="reload()">
+                <span class="fas fa-sync hvr-icon"></span>
+                <span>Reload Table</span>
+            </button>
+        </div>
+        <div>
+            <div class="btn-group"
+                 uib-dropdown
+                 is-open="status.isopen">
+                <button id="single-button"
+                        type="button"
+                        class="btn btn-outline-primary"
+                        uib-dropdown-toggle
+                        ng-disabled="disabled">
+                    View Submissions
+                </button>
+                <div class="dropdown-menu"
+                     uib-dropdown-menu
+                     role="menu"
+                     aria-labelledby="single-button">
+                    <a ui-sref="entries"
+                       class="dropdown-item"><span class="fas fa-file fa-fw"></span> Abstracts</a>
+                    <a ui-sref="templates"
+                       class="dropdown-item"><span class="fas fa-file fa-fw"></span> Templates</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <table class="table mt-3"
+           custom-event
+           st-table="tableState.display"
+           st-pipe="customPipe">
+        <thead class="thead-light">
+            <tr id="column-names">
+                <th class="clickable align-top"
+                    st-sort="Title">Project Title</th>
+                <th class="clickable align-top"
+                    st-sort="Modified">Last Modified</th>
+                <th class="align-top">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><span class="fas fa-search"></span></span>
+                        </div>
+                        <input class="form-control"
+                               st-search="Title"
+                               ng-model="filterState.searchTitle" />
+                    </div>
+                </th>
+                <th></th>
+                <th><button class="btn btn-danger"
+                            ng-click="clearFilters()">Clear Filters</button></th>
+            </tr>
+            <tr ng-repeat="row in tableState.display">
+                <td ng-bind="row.Title"></td>
+                <td ng-bind="row.Modified | date:'medium'"></td>
+                <td>
+                    <button class="btn btn-danger"
+                            ng-click="deleteItem(row.ID)"><span class="fas fa-trash"></span></button>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan={{tableState.colLength}}
+                    class="text-center">
+                    <div class="animated slideInUp"
+                         st-items-by-page="25"
+                         st-pagination=""
+                         st-template="views/components/pagination.html"></div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+    <br><br><br><br>
+</div>

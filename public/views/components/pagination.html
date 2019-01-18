@@ -1,0 +1,10 @@
+<nav ng-show="totalItemCount > 0">
+    <ul class="pagination d-flex justify-content-center">
+        <li class="page-item"><a class="page-link" ng-click="selectPage(1)">First</a> </li>
+        <li class="page-item"><a class="page-link" ng-click="selectPage(currentPage - 1)"><i class="fas fa-caret-left"></i></a></li>
+        <li class="page-item"><a class="page-link"><page-select></page-select> of <span ng-bind="numPages"></span></a></li>
+        <li class="page-item"><a class="page-link" ng-click="selectPage(currentPage + 1)"><span class="fas fa-caret-right"></span></a></li>
+        <li><a class="page-link" ng-click="selectPage(numPages)">Last</a></li>
+    </ul>
+    <div><span ng-bind="totalItemCount"></span> Records</div>
+</nav>

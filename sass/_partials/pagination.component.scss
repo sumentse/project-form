@@ -1,0 +1,42 @@
+.st-sort-ascent:before {
+    content: '\25B2';
+}
+
+.st-sort-descent:before {
+    content: '\25BC';
+}
+
+.table {
+    .select-page {
+        width: 50px;
+        text-align: center;
+    }
+    tr {
+        background: $white;
+        tr>th {
+            border-bottom: 0px;
+        }
+    }
+    .pagination {
+        margin-bottom: 1rem;
+        a {
+            cursor: pointer;
+        }
+        li a input {
+            padding: 0;
+            margin: -5px 0;
+        }
+    }
+}
+
+[st-pagination=''] {
+    position: fixed;
+    bottom: 0px;
+    background: #fff;
+    left: 0px;
+    width: 100%;
+    z-index: 5;
+    box-shadow: $msk_med_gray 0px -1px 5px;
+    padding: 1rem 0rem 1rem 0rem;
+    animation-duration: 1.3s;
+}
