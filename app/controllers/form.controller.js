@@ -66,7 +66,7 @@ export default (
         if(userProfile.Email){
             email.send(
                 [userProfile.Email],
-                'hadqifair@mskcc.org',
+                null,
                 `
                     Your project for <strong>${$scope.formState.metadata.project_title}</strong> has been received. Please keep this for your record. <br>
                     Remember to complete and submit a PowerPoint presentation for a complete project submission. 
